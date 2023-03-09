@@ -1,0 +1,9 @@
+D:\StudentExam\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\StudentExam\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\StudentExam\BLL\bin\Debug\BLL.dll
+D:\StudentExam\BLL\bin\Debug\BLL.pdb
+D:\StudentExam\BLL\bin\Debug\DAL.dll
+D:\StudentExam\BLL\bin\Debug\DAL.pdb
+D:\StudentExam\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\StudentExam\BLL\obj\Debug\BLL.dll
+D:\StudentExam\BLL\obj\Debug\BLL.pdb
