@@ -10,6 +10,7 @@ namespace PL
     public partial class FrmCourse : Form
     {
         private readonly ICoursesRepository  coursesRepository;
+        private readonly CoursesRepository courRepository;
         private Course course;
         private int id;
         public FrmCourse()
@@ -17,22 +18,15 @@ namespace PL
             InitializeComponent();
             course = new Course();
             coursesRepository = Program.GetService<ICoursesRepository>();
-         
+
+
         }
         private void AutoNumber()
         {
             id = coursesRepository.GetIDLast();
-            if (id == 0)
-            {
-                txtID.Text = "1";
-            }
-            else
-            {
-                txtID.Text = (id + 1).ToString();
-            }
-
+            txtID.Text = (id + 1).ToString();
+            
             txtName.Clear();
-     
             btnAdd.Enabled = true;
             btnNew.Enabled = true;
             btnDelete.Enabled = false;

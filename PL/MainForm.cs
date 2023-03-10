@@ -19,7 +19,7 @@ namespace PL
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            FrmStudentCourses frm = new FrmStudentCourses();
+            FrmCourse frm = new FrmCourse();
             frm.ShowDialog();
         }
 
@@ -73,7 +73,7 @@ namespace PL
 
         private void button9_Click(object sender, EventArgs e)
         {
-            FrmExam frm = new FrmExam();
+            FrmExamName frm = new FrmExamName();
             frm.ShowDialog();
         }
 

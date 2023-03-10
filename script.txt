@@ -1,0 +1,1478 @@
+USE [master]
+GO
+/****** Object:  Database [ITIExamSystem]    Script Date: 2023-03-10 2:35:58 PM ******/
+CREATE DATABASE [ITIExamSystem]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'ITIStudentExam', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.SQLEXPRESS\MSSQL\DATA\ITIStudentExam.mdf' , SIZE = 4096KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'ITIStudentExam_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.SQLEXPRESS\MSSQL\DATA\ITIStudentExam_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [ITIExamSystem] SET COMPATIBILITY_LEVEL = 110
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [ITIExamSystem].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [ITIExamSystem] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET AUTO_CREATE_STATISTICS ON 
+GO
+ALTER DATABASE [ITIExamSystem] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [ITIExamSystem] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [ITIExamSystem] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [ITIExamSystem] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [ITIExamSystem] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [ITIExamSystem] SET  MULTI_USER 
+GO
+ALTER DATABASE [ITIExamSystem] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [ITIExamSystem] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [ITIExamSystem] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [ITIExamSystem] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+USE [ITIExamSystem]
+GO
+/****** Object:  StoredProcedure [dbo].[ChoiceAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[ChoiceAdd]
+ (@choise_id int
+           ,@choise_answer_first nvarchar(50)
+           ,@choise_answer_second nvarchar(50)
+           ,@choise_answer_third nvarchar(50)
+           ,@choise_answer_fourth nvarchar(50))
+as
+INSERT INTO [dbo].[Choices]
+           ([choise_id]
+           ,[choise_answer_first]
+           ,[choise_answer_second]
+           ,[choise_answer_third]
+           ,[choise_answer_fourth])
+     VALUES
+           (@choise_id 
+           ,@choise_answer_first
+           ,@choise_answer_second
+           ,@choise_answer_third 
+           ,@choise_answer_fourth )
+
+GO
+/****** Object:  StoredProcedure [dbo].[ChoiceAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROC [dbo].[ChoiceAll]
+AS
+
+ SELECT 
+            choise_id 
+           ,choise_answer_first 
+           ,choise_answer_second 
+           ,choise_answer_third 
+           ,choise_answer_fourth 
+  from Choices 
+GO
+/****** Object:  StoredProcedure [dbo].[ChoiceByID]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[ChoiceByID]
+(@choice_id int)
+AS
+
+ SELECT 
+            choise_id 
+           ,choise_answer_first 
+           ,choise_answer_second 
+           ,choise_answer_third 
+           ,choise_answer_fourth 
+  from Choices  WHERE choise_id=@choice_id
+GO
+/****** Object:  StoredProcedure [dbo].[ChoiceEdit]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[ChoiceEdit]
+           (@choise_id int
+           ,@choise_answer_first nvarchar(50)
+           ,@choise_answer_second nvarchar(50)
+           ,@choise_answer_third nvarchar(50)
+           ,@choise_answer_fourth nvarchar(50))
+as
+update  [dbo].[Choices]
+set 
+            choise_answer_first=@choise_answer_first
+           ,choise_answer_second=@choise_answer_second
+           ,choise_answer_third=@choise_answer_third
+           ,choise_answer_fourth=@choise_answer_fourth
+
+where choise_id=@choise_id
+GO
+/****** Object:  StoredProcedure [dbo].[ChoiceRemoveAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+			create proc [dbo].[ChoiceRemoveAll]
+ AS
+ Delete from Choices 
+GO
+/****** Object:  StoredProcedure [dbo].[ChoiceRemoveOne]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+		create proc [dbo].[ChoiceRemoveOne]
+    (@choise_id int)
+ AS
+ Delete from Choices where choise_id=@choise_id
+GO
+/****** Object:  StoredProcedure [dbo].[CourseAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[CourseAdd] 
+ (@course_id int,
+  @course_name nvarchar(50) )
+ AS
+ insert into Courses
+ ( course_id ,
+   course_name  )
+  values 
+ ( @course_id ,
+   @course_name )
+GO
+/****** Object:  StoredProcedure [dbo].[CourseAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[CourseAll]
+AS
+
+ SELECT 
+ course_id,
+ course_name 
+  from Courses
+GO
+/****** Object:  StoredProcedure [dbo].[CourseByID]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[CourseByID] (@course_id int)
+ AS
+  SELECT 
+  course_id ,
+  course_name   from Courses where course_id = @course_id
+
+GO
+/****** Object:  StoredProcedure [dbo].[CourseByIDGetTopics]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[CourseByIDGetTopics] (@course_id int)
+ AS
+  SELECT 
+  topic_id,
+  topic_name ,
+  Courses.course_name   from Topics ,Courses where Courses.course_id=Topics.topic_course_id and course_id = @course_id
+
+GO
+/****** Object:  StoredProcedure [dbo].[CourseByName]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[CourseByName] (@course_name nvarchar(50))
+ AS
+  SELECT 
+ course_id ,
+ course_name 
+ from Courses where course_name like  '%'+ @course_name +'%'
+GO
+/****** Object:  StoredProcedure [dbo].[CourseEdit]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[CourseEdit] 
+ 
+ (@course_id int,
+  @course_name nvarchar(50) )
+
+ AS
+ update Courses set 
+   course_id=@course_id ,
+   course_name=@course_name
+   where course_id=@course_id
+GO
+/****** Object:  StoredProcedure [dbo].[CourseLast]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[CourseLast] 
+ AS
+ 
+ SELECT IsNull(max(course_id),0) FROM Courses 
+GO
+/****** Object:  StoredProcedure [dbo].[CourseRemoveAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[CourseRemoveAll]
+ AS
+ Delete from Courses 
+GO
+/****** Object:  StoredProcedure [dbo].[CourseRemoveOne]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[CourseRemoveOne] (@course_id int)
+ AS
+ Delete from Courses where course_id=@course_id
+GO
+/****** Object:  StoredProcedure [dbo].[DepartmentAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROC [dbo].[DepartmentAdd] 
+ 
+ (@dept_id int,
+  @dept_name nvarchar(50) )
+ AS
+ insert into Departments
+ 
+ (dept_id ,
+  dept_name )
+  values 
+ (@dept_id ,
+  @dept_name )
+GO
+/****** Object:  StoredProcedure [dbo].[DepartmentAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROC [dbo].[DepartmentAll]
+AS
+
+ SELECT * from Departments
+GO
+/****** Object:  StoredProcedure [dbo].[DepartmentByID]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[DepartmentByID] (@dept_id int)
+ AS
+  SELECT 
+  dept_id ,
+  dept_name  from Departments where dept_id = @dept_id
+
+GO
+/****** Object:  StoredProcedure [dbo].[DepartmentByName]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[DepartmentByName] (@dept_name nvarchar(50))
+ AS
+  SELECT 
+ dept_id ,
+ dept_name 
+ from Departments where dept_name like  '%'+ @dept_name +'%'
+GO
+/****** Object:  StoredProcedure [dbo].[DepartmentEdit]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[DepartmentEdit] 
+ 
+ (@dept_id int,
+  @dept_name nvarchar(50) )
+
+ AS
+ update Departments set 
+   dept_id=@dept_id ,
+   dept_name=@dept_name
+
+   where dept_id=@dept_id
+GO
+/****** Object:  StoredProcedure [dbo].[DepartmentLast]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[DepartmentLast] 
+ AS
+ 
+ SELECT IsNull(max(dept_id),0) FROM Departments 
+GO
+/****** Object:  StoredProcedure [dbo].[DepartmentRemoveAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[DepartmentRemoveAll]
+ AS
+ Delete from Departments 
+GO
+/****** Object:  StoredProcedure [dbo].[DepartmentRemoveOne]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[DepartmentRemoveOne] (@dept_id int)
+ AS
+ Delete from Departments where dept_id=@dept_id
+GO
+/****** Object:  StoredProcedure [dbo].[ExamAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROC [dbo].[ExamAdd] 
+ 
+ (@exam_id int,
+  @exam_name nvarchar(50) )
+ AS
+ insert into Exams
+ 
+ (exam_id ,
+  exam_name )
+  values 
+ (@exam_id ,
+  @exam_name )
+GO
+/****** Object:  StoredProcedure [dbo].[ExamAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROC [dbo].[ExamAll]
+AS
+
+ SELECT 
+ exam_id,exam_name
+ from Exams
+GO
+/****** Object:  StoredProcedure [dbo].[ExamByID]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[ExamByID] (@exam_id int)
+ AS
+  SELECT 
+  exam_id ,
+  question_id,
+  question_type,
+  question_title,
+  question_right_answer,
+  choise_answer_first,
+  choise_answer_second,
+  choise_answer_third,
+  choise_answer_fourth  
+  from ExamQuestions,Questions,Choices where ExamQuestions.exam_question_id=Questions.question_id and Choices.choise_id=Questions.question_body_answer_id and exam_id = @exam_id
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[ExamByName]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[ExamByName] (@exam_name nvarchar(50))
+ AS
+SELECT 
+ exam_id ,
+  exam_name
+  
+  from Exams where  exam_name like  '%'+ @exam_name +'%'
+GO
+/****** Object:  StoredProcedure [dbo].[ExamEdit]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[ExamEdit] 
+ (@exam_id int,
+  @exam_name nvarchar(50))
+
+ AS
+ update Exams set 
+   exam_id=@exam_id ,
+   exam_name=@exam_name
+
+   where exam_id=@exam_id
+GO
+/****** Object:  StoredProcedure [dbo].[ExamLast]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[ExamLast] 
+ AS
+ 
+ SELECT IsNull(max(exam_id),0) FROM Exams 
+GO
+/****** Object:  StoredProcedure [dbo].[ExamRemoveAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[ExamRemoveAll]
+ AS
+ Delete from Exams
+GO
+/****** Object:  StoredProcedure [dbo].[ExamRemoveOne]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[ExamRemoveOne] (@exam_id int)
+ AS
+ Delete from Exams where exam_id=@exam_id
+GO
+/****** Object:  StoredProcedure [dbo].[GenerateExam]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[GenerateExam]
+(@course_id int,@exam_id int,@num_question_tf int,@num_question_mcq int)
+
+as 
+
+ INSERT INTO ExamQuestions
+SELECT TOP (@num_question_tf) question_id ,@exam_id FROM Questions WHERE question_type='tf' and questions_course_id=@course_id ORDER BY NEWID()
+
+INSERT INTO ExamQuestions
+SELECT TOP (@num_question_mcq) question_id ,@exam_id FROM Questions WHERE question_type='mcq' and questions_course_id=@course_id ORDER BY NEWID()
+GO
+/****** Object:  StoredProcedure [dbo].[GradeAllByStudentID]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[GradeAllByStudentID]
+(@stu_id int)
+AS
+
+ SELECT 
+ stu_name,
+ exam_name,
+ grade_percent
+  from StudentGrades,Exams,Students where Students.stu_id=StudentGrades.grade_stu_id  and Exams.exam_id=StudentGrades.grade_exam_id and stu_id=@stu_id
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[InstructorAdd] 
+ 
+ (@instru_id int,
+  @instru_name nvarchar(50),
+   @instru_password nvarchar(50) )
+ AS
+ insert into Instructors
+ 
+ (instru_id ,
+  instru_name,
+  instru_password )
+  values 
+ (@instru_id ,
+  @instru_name,
+  @instru_password )
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROC [dbo].[InstructorAll]
+AS
+
+ SELECT * from Instructors
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorByID]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[InstructorByID] (@instru_id int)
+ AS
+  SELECT 
+  instru_id ,
+  instru_name,
+  instru_password  from Instructors where instru_id = @instru_id
+
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorByName]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[InstructorByName] (@instru_name nvarchar(50))
+ AS
+  SELECT 
+ instru_id ,
+ instru_name,
+ instru_password
+ from Instructors where instru_name like  '%'+ @instru_name +'%'
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorByNamePassword]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[InstructorByNamePassword] (@instru_name nvarchar(50),@instru_password nvarchar(50))
+ AS
+ SELECT 
+ *
+  from Instructors where instru_name=@instru_name and  instru_password=@instru_password  
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorCourseAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROC [dbo].[InstructorCourseAdd] 
+ (@instru_id int,
+  @course_id int) 
+ AS
+ insert into InstructorCourse
+ ( instru_id ,
+   course_id )
+  values 
+ ( @instru_id ,
+   @course_id)
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorCourseAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROC [dbo].[InstructorCourseAll]
+AS
+
+ SELECT 
+ instru_name,
+ course_name
+  from InstructorCourse ,Instructors,Courses where  InstructorCourse.instru_id=Instructors.instru_id and InstructorCourse.course_id=Courses.course_id
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorCoursesAllByID]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[InstructorCoursesAllByID]
+(@instru_id int)
+AS
+
+ SELECT 
+instru_name,
+course_name,
+count(StudentCourse.stu_id) as NumStu
+  from Instructors,InstructorCourse,Courses,StudentCourse 
+  where Instructors.instru_id=InstructorCourse.instru_id  and
+   Courses.course_id=InstructorCourse.course_id and
+   Courses.course_id=StudentCourse.course_id and
+    InstructorCourse.instru_id=@instru_id 
+	group by instru_name ,course_name
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorEdit]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[InstructorEdit] 
+ 
+ (@instru_id int,
+  @instru_name nvarchar(50),
+   @instru_password nvarchar(50) )
+
+ AS
+ update Instructors set 
+   instru_id=@instru_id ,
+   instru_name=@instru_name,
+   instru_password=@instru_password
+
+   where instru_id=@instru_id
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorLast]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[InstructorLast] 
+ AS
+ 
+ SELECT IsNull(max(instru_id),0) FROM Instructors 
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorRemoveAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[InstructorRemoveAll]
+ AS
+ Delete from Instructors 
+GO
+/****** Object:  StoredProcedure [dbo].[InstructorRemoveOne]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[InstructorRemoveOne] (@instru_id int)
+ AS
+ Delete from Instructors where instru_id=@instru_id
+GO
+/****** Object:  StoredProcedure [dbo].[QuestionAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[QuestionAdd]
+          (@question_id int
+           ,@question_type nvarchar(50)
+           ,@question_title nvarchar(50)
+           ,@question_right_answer nvarchar(50)
+           ,@question_body_answer_id int ,
+		    @questions_course_id int)
+as
+INSERT INTO [dbo].Questions
+           (question_id
+           ,question_type
+           ,question_title
+           ,question_right_answer
+           ,question_body_answer_id,
+		    questions_course_id)
+     VALUES
+          (@question_id
+           ,@question_type
+           ,@question_title
+           ,@question_right_answer
+           ,@question_body_answer_id,
+		    @questions_course_id)
+
+GO
+/****** Object:  StoredProcedure [dbo].[QuestionAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[QuestionAll]
+as
+           select 
+           question_id
+           ,question_type
+           ,question_title
+           ,question_right_answer
+           ,question_body_answer_id,
+		    course_name
+			from [dbo].Questions ,Courses where Questions.questions_course_id=Courses.course_id
+   
+
+GO
+/****** Object:  StoredProcedure [dbo].[QuestionByID]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[QuestionByID] (@question_id int)
+ AS
+  select 
+           question_id
+           ,question_type
+           ,question_title
+           ,question_right_answer
+           ,question_body_answer_id,
+		    course_name
+			from [dbo].Questions ,Courses where Questions.questions_course_id=Courses.course_id and question_id=@question_id
+GO
+/****** Object:  StoredProcedure [dbo].[QuestionEdit]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[QuestionEdit]
+           (@question_id int
+           ,@question_type nvarchar(50)
+           ,@question_title nvarchar(50)
+           ,@question_right_answer nvarchar(50)
+           ,@question_body_answer_id int,
+            @questions_course_id int)
+as
+update  [dbo].Questions
+set 
+            question_id=@question_id
+           ,question_type=@question_type
+           ,question_title=@question_title
+           ,question_right_answer=@question_right_answer
+           ,question_body_answer_id=@question_body_answer_id
+           ,questions_course_id=@questions_course_id
+
+where question_id=@question_id
+GO
+/****** Object:  StoredProcedure [dbo].[QuestionLast]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[QuestionLast] 
+ AS
+ 
+ SELECT IsNull(max(question_id),0) FROM Questions 
+GO
+/****** Object:  StoredProcedure [dbo].[QuestionRemoveAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+			create proc [dbo].[QuestionRemoveAll]
+ AS
+ Delete from Questions
+GO
+/****** Object:  StoredProcedure [dbo].[QuestionRemoveOne]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+			create proc [dbo].[QuestionRemoveOne]
+    (@question_id int)
+ AS
+ Delete from Questions where question_id=@question_id
+
+GO
+/****** Object:  StoredProcedure [dbo].[StudentAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[StudentAdd] 
+ 
+ (@stu_id int,
+  @stu_name nvarchar(50) ,
+  @stu_dept_id int,
+  @stu_password nvarchar(50))
+ AS
+ insert into Students
+ 
+ (stu_id ,
+  stu_name,
+  stu_dept_id,
+  stu_password )
+  values 
+ (@stu_id ,
+  @stu_name,
+  @stu_dept_id,
+  @stu_password )
+GO
+/****** Object:  StoredProcedure [dbo].[StudentAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[StudentAll]
+AS
+
+ SELECT 
+ stu_id,
+ stu_name,
+ Departments.dept_name,
+ stu_password
+  from Students,Departments where Students.stu_dept_id=Departments.dept_id
+GO
+/****** Object:  StoredProcedure [dbo].[StudentAnswerAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[StudentAnswerAdd]
+
+  
+   (@answer_exam_id int,
+   @answer_stu_id int,
+   @answer_question_id int,
+   @answer_selected nvarchar(20))
+
+   as
+   insert into StudentAnswer
+    
+           (answer_exam_id
+           ,answer_stu_id
+           ,answer_question_id
+           ,answer_selected)
+
+		   values
+		   (
+            @answer_exam_id
+           ,@answer_stu_id
+           ,@answer_question_id
+           ,@answer_selected)
+GO
+/****** Object:  StoredProcedure [dbo].[StudentAnswerAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[StudentAnswerAll]
+   
+    as
+    select 
+	        answer_id
+           ,exam_name
+           ,stu_name
+           ,question_title
+           ,answer_selected
+
+		    from StudentAnswer,Exams,Students,Questions 
+			where  StudentAnswer.answer_exam_id=Exams.exam_id
+			     and StudentAnswer.answer_stu_id=Students.stu_id
+				 and StudentAnswer.answer_question_id=Questions.question_id
+
+		 
+GO
+/****** Object:  StoredProcedure [dbo].[StudentAnswerModel]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[StudentAnswerModel]
+   (@exam_id int,@stu_id int)
+    as
+    select 
+	        answer_id
+			,exam_id
+           ,exam_name
+           ,stu_name
+		   ,question_right_answer
+           ,question_title
+           ,answer_selected
+
+		    from StudentAnswer,Exams,Students,Questions 
+			where  StudentAnswer.answer_exam_id=Exams.exam_id
+			     and StudentAnswer.answer_stu_id=Students.stu_id
+				 and StudentAnswer.answer_question_id=Questions.question_id
+				 and exam_id=@exam_id and stu_id=@stu_id
+		 
+GO
+/****** Object:  StoredProcedure [dbo].[StudentByID]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[StudentByID] (@stu_id int)
+ AS
+  SELECT 
+  stu_id ,
+  stu_name,
+  Departments.dept_name
+  ,stu_password   from Students,Departments  where Students.stu_dept_id=Departments.dept_id and stu_id = @stu_id
+
+GO
+/****** Object:  StoredProcedure [dbo].[StudentByName]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[StudentByName] (@stu_name nvarchar(50))
+ AS
+  SELECT 
+ stu_id ,
+ stu_name, 
+   Departments.dept_name,
+   stu_password   from Students,Departments  where Students.stu_dept_id=Departments.dept_id and stu_name like  '%'+ @stu_name +'%'
+GO
+/****** Object:  StoredProcedure [dbo].[StudentByNamePassword]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[StudentByNamePassword] (@stu_name nvarchar(50),@stu_password nvarchar(50))
+ AS
+ SELECT 
+ *
+  from Students where stu_name=@stu_name and  stu_password=@stu_password  
+GO
+/****** Object:  StoredProcedure [dbo].[StudentCourseAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[StudentCourseAdd] 
+ (@stu_id int,
+  @course_id int) 
+ AS
+ insert into StudentCourse
+ ( stu_id ,
+   course_id )
+  values 
+ ( @stu_id ,
+   @course_id)
+GO
+/****** Object:  StoredProcedure [dbo].[StudentCourseAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[StudentCourseAll]
+AS
+
+ SELECT 
+ stu_name,
+ course_name
+  from StudentCourse ,Students,Courses where  StudentCourse.stu_id=Students.stu_id and StudentCourse.course_id=Courses.course_id
+GO
+/****** Object:  StoredProcedure [dbo].[StudentEdit]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[StudentEdit] 
+ 
+ (@stu_id int,
+  @stu_name nvarchar(50),
+   @stu_password nvarchar(50) )
+
+ AS
+ update Students set 
+   stu_id=@stu_id ,
+   stu_name=@stu_name,
+   stu_password=@stu_password
+
+   where stu_id=@stu_id
+GO
+/****** Object:  StoredProcedure [dbo].[StudentGradesAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+create proc [dbo].[StudentGradesAdd]
+           (@grade_stu_id int
+           ,@grade_exam_id int
+           ,@grade_percent decimal(18,0))
+as
+INSERT INTO [dbo].[StudentGrades]
+           ([grade_stu_id]
+           ,[grade_exam_id]
+           ,[grade_percent])
+     VALUES
+           (@grade_stu_id 
+           ,@grade_exam_id 
+           ,@grade_percent)
+
+GO
+/****** Object:  StoredProcedure [dbo].[StudentGradesAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[StudentGradesAll]
+   
+    as
+    select 
+	        stu_name
+           ,exam_name
+           ,grade_percent
+
+		    from StudentGrades ,Students ,Exams where Students.stu_id=StudentGrades.grade_stu_id and Exams.exam_id=StudentGrades.grade_exam_id 
+
+		 
+GO
+/****** Object:  StoredProcedure [dbo].[StudentiNDepartmentAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[StudentiNDepartmentAll]
+(@dept_id int)
+AS
+
+ SELECT 
+ stu_id,
+ stu_name,
+ Departments.dept_name
+  from Students,Departments where Students.stu_dept_id=Departments.dept_id and stu_dept_id=@dept_id
+GO
+/****** Object:  StoredProcedure [dbo].[StudentLast]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[StudentLast] 
+ AS
+ 
+ SELECT IsNull(max(stu_id),0) FROM Students 
+GO
+/****** Object:  StoredProcedure [dbo].[StudentRemoveAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[StudentRemoveAll]
+ AS
+ Delete from Students 
+GO
+/****** Object:  StoredProcedure [dbo].[StudentRemoveOne]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[StudentRemoveOne] (@stu_id int)
+ AS
+ Delete from Students where stu_id=@stu_id
+GO
+/****** Object:  StoredProcedure [dbo].[TopicAdd]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROC [dbo].[TopicAdd] 
+ 
+ (@topic_id int,
+  @topic_name nvarchar(50) ,
+  @topic_course_id int)
+ AS
+ insert into Topics
+ 
+ (topic_id ,
+  topic_name,
+  topic_course_id )
+  values 
+ (@topic_id ,
+  @topic_name,
+  @topic_course_id )
+GO
+/****** Object:  StoredProcedure [dbo].[TopicAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create PROC [dbo].[TopicAll]
+AS
+
+ SELECT 
+ topic_id ,
+  topic_name,
+  course_name
+  from Topics,Courses where Topics.topic_course_id=Courses.course_id
+GO
+/****** Object:  StoredProcedure [dbo].[TopicByID]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[TopicByID] (@topic_id int)
+ AS
+ SELECT 
+ topic_id ,
+  topic_name,
+  course_name
+  from Topics,Courses where Topics.topic_course_id=Courses.course_id and topic_id = @topic_id
+
+GO
+/****** Object:  StoredProcedure [dbo].[TopicByName]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[TopicByName] (@topic_name nvarchar(50))
+ AS
+SELECT 
+ topic_id ,
+  topic_name,
+  course_name
+  from Topics,Courses where Topics.topic_course_id=Courses.course_id and topic_name like  '%'+ @topic_name +'%'
+GO
+/****** Object:  StoredProcedure [dbo].[TopicEdit]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[TopicEdit] 
+ 
+ (@topic_id int,
+  @topic_name nvarchar(50),
+   @topic_course_id int )
+
+ AS
+ update Topics set 
+   topic_id=@topic_id ,
+   topic_name=@topic_name,
+   topic_course_id=@topic_course_id
+
+   where topic_id=@topic_id
+GO
+/****** Object:  StoredProcedure [dbo].[TopicLast]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ CREATE PROC [dbo].[TopicLast] 
+ AS
+ 
+ SELECT IsNull(max(topic_id),0) FROM Topics 
+GO
+/****** Object:  StoredProcedure [dbo].[TopicRemoveAll]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[TopicRemoveAll]
+ AS
+ Delete from Topics 
+GO
+/****** Object:  StoredProcedure [dbo].[TopicRemoveOne]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ create PROC [dbo].[TopicRemoveOne] (@topic_id int)
+ AS
+ Delete from Topics where topic_id=@topic_id
+GO
+/****** Object:  Table [dbo].[Choices]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Choices](
+	[choise_id] [int] NOT NULL,
+	[choise_answer_first] [nvarchar](50) NULL,
+	[choise_answer_second] [nvarchar](50) NULL,
+	[choise_answer_third] [nvarchar](50) NULL,
+	[choise_answer_fourth] [nvarchar](50) NULL,
+ CONSTRAINT [PK_AnswerMcq] PRIMARY KEY CLUSTERED 
+(
+	[choise_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Courses]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Courses](
+	[course_id] [int] NOT NULL,
+	[course_name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Courses] PRIMARY KEY CLUSTERED 
+(
+	[course_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Departments]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Departments](
+	[dept_id] [int] NOT NULL,
+	[dept_name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Departments] PRIMARY KEY CLUSTERED 
+(
+	[dept_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[ExamQuestions]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ExamQuestions](
+	[exam_question_id] [int] NOT NULL,
+	[exam_id] [int] NOT NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Exams]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Exams](
+	[exam_id] [int] NOT NULL,
+	[exam_name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Exams] PRIMARY KEY CLUSTERED 
+(
+	[exam_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[InstructorCourse]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[InstructorCourse](
+	[instru_id] [int] NULL,
+	[course_id] [int] NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Instructors]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Instructors](
+	[instru_id] [int] NOT NULL,
+	[instru_name] [nvarchar](50) NULL,
+	[instru_password] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Instructors] PRIMARY KEY CLUSTERED 
+(
+	[instru_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Questions]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Questions](
+	[question_id] [int] NOT NULL,
+	[question_type] [nvarchar](50) NULL,
+	[question_title] [nvarchar](500) NULL,
+	[question_right_answer] [nvarchar](50) NULL,
+	[question_body_answer_id] [int] NULL,
+	[questions_course_id] [int] NULL,
+ CONSTRAINT [PK_Questions_1] PRIMARY KEY CLUSTERED 
+(
+	[question_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[StudentAnswer]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentAnswer](
+	[answer_id] [int] IDENTITY(1,1) NOT NULL,
+	[answer_exam_id] [int] NULL,
+	[answer_stu_id] [int] NULL,
+	[answer_question_id] [int] NULL,
+	[answer_selected] [nvarchar](20) NULL,
+ CONSTRAINT [PK_StudentAnswer] PRIMARY KEY CLUSTERED 
+(
+	[answer_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[StudentCourse]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentCourse](
+	[course_id] [int] NULL,
+	[stu_id] [int] NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[StudentGrades]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StudentGrades](
+	[grade_id] [int] IDENTITY(1,1) NOT NULL,
+	[grade_stu_id] [int] NULL,
+	[grade_exam_id] [int] NULL,
+	[grade_percent] [decimal](18, 0) NULL,
+ CONSTRAINT [PK_StudentGrades] PRIMARY KEY CLUSTERED 
+(
+	[grade_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Students]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Students](
+	[stu_id] [int] NOT NULL,
+	[stu_name] [nvarchar](50) NULL,
+	[stu_dept_id] [int] NULL,
+	[stu_password] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED 
+(
+	[stu_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Topics]    Script Date: 2023-03-10 2:35:58 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Topics](
+	[topic_id] [int] NOT NULL,
+	[topic_name] [nvarchar](50) NULL,
+	[topic_course_id] [int] NULL,
+ CONSTRAINT [PK_Topics] PRIMARY KEY CLUSTERED 
+(
+	[topic_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+ALTER TABLE [dbo].[ExamQuestions]  WITH CHECK ADD  CONSTRAINT [FK_ExamQuestions_Exams] FOREIGN KEY([exam_id])
+REFERENCES [dbo].[Exams] ([exam_id])
+GO
+ALTER TABLE [dbo].[ExamQuestions] CHECK CONSTRAINT [FK_ExamQuestions_Exams]
+GO
+ALTER TABLE [dbo].[ExamQuestions]  WITH CHECK ADD  CONSTRAINT [FK_ExamQuestions_Questions] FOREIGN KEY([exam_question_id])
+REFERENCES [dbo].[Questions] ([question_id])
+GO
+ALTER TABLE [dbo].[ExamQuestions] CHECK CONSTRAINT [FK_ExamQuestions_Questions]
+GO
+ALTER TABLE [dbo].[InstructorCourse]  WITH CHECK ADD  CONSTRAINT [FK_InstructorCourse_Courses] FOREIGN KEY([course_id])
+REFERENCES [dbo].[Courses] ([course_id])
+GO
+ALTER TABLE [dbo].[InstructorCourse] CHECK CONSTRAINT [FK_InstructorCourse_Courses]
+GO
+ALTER TABLE [dbo].[InstructorCourse]  WITH CHECK ADD  CONSTRAINT [FK_InstructorCourse_Instructors] FOREIGN KEY([instru_id])
+REFERENCES [dbo].[Instructors] ([instru_id])
+GO
+ALTER TABLE [dbo].[InstructorCourse] CHECK CONSTRAINT [FK_InstructorCourse_Instructors]
+GO
+ALTER TABLE [dbo].[Questions]  WITH CHECK ADD  CONSTRAINT [FK_Questions_Choices] FOREIGN KEY([question_body_answer_id])
+REFERENCES [dbo].[Choices] ([choise_id])
+GO
+ALTER TABLE [dbo].[Questions] CHECK CONSTRAINT [FK_Questions_Choices]
+GO
+ALTER TABLE [dbo].[Questions]  WITH CHECK ADD  CONSTRAINT [FK_Questions_Courses] FOREIGN KEY([questions_course_id])
+REFERENCES [dbo].[Courses] ([course_id])
+GO
+ALTER TABLE [dbo].[Questions] CHECK CONSTRAINT [FK_Questions_Courses]
+GO
+ALTER TABLE [dbo].[StudentAnswer]  WITH CHECK ADD  CONSTRAINT [FK_StudentAnswer_Exams] FOREIGN KEY([answer_exam_id])
+REFERENCES [dbo].[Exams] ([exam_id])
+GO
+ALTER TABLE [dbo].[StudentAnswer] CHECK CONSTRAINT [FK_StudentAnswer_Exams]
+GO
+ALTER TABLE [dbo].[StudentAnswer]  WITH CHECK ADD  CONSTRAINT [FK_StudentAnswer_Questions] FOREIGN KEY([answer_question_id])
+REFERENCES [dbo].[Questions] ([question_id])
+GO
+ALTER TABLE [dbo].[StudentAnswer] CHECK CONSTRAINT [FK_StudentAnswer_Questions]
+GO
+ALTER TABLE [dbo].[StudentAnswer]  WITH CHECK ADD  CONSTRAINT [FK_StudentAnswer_Students] FOREIGN KEY([answer_stu_id])
+REFERENCES [dbo].[Students] ([stu_id])
+GO
+ALTER TABLE [dbo].[StudentAnswer] CHECK CONSTRAINT [FK_StudentAnswer_Students]
+GO
+ALTER TABLE [dbo].[StudentCourse]  WITH CHECK ADD  CONSTRAINT [FK_StudentCourses_Courses] FOREIGN KEY([course_id])
+REFERENCES [dbo].[Courses] ([course_id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[StudentCourse] CHECK CONSTRAINT [FK_StudentCourses_Courses]
+GO
+ALTER TABLE [dbo].[StudentCourse]  WITH CHECK ADD  CONSTRAINT [FK_StudentCourses_Students] FOREIGN KEY([stu_id])
+REFERENCES [dbo].[Students] ([stu_id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[StudentCourse] CHECK CONSTRAINT [FK_StudentCourses_Students]
+GO
+ALTER TABLE [dbo].[StudentGrades]  WITH CHECK ADD  CONSTRAINT [FK_StudentGrades_Exams] FOREIGN KEY([grade_exam_id])
+REFERENCES [dbo].[Exams] ([exam_id])
+GO
+ALTER TABLE [dbo].[StudentGrades] CHECK CONSTRAINT [FK_StudentGrades_Exams]
+GO
+ALTER TABLE [dbo].[StudentGrades]  WITH CHECK ADD  CONSTRAINT [FK_StudentGrades_Students] FOREIGN KEY([grade_stu_id])
+REFERENCES [dbo].[Students] ([stu_id])
+GO
+ALTER TABLE [dbo].[StudentGrades] CHECK CONSTRAINT [FK_StudentGrades_Students]
+GO
+ALTER TABLE [dbo].[Students]  WITH CHECK ADD  CONSTRAINT [FK_Students_Departments] FOREIGN KEY([stu_dept_id])
+REFERENCES [dbo].[Departments] ([dept_id])
+GO
+ALTER TABLE [dbo].[Students] CHECK CONSTRAINT [FK_Students_Departments]
+GO
+ALTER TABLE [dbo].[Topics]  WITH CHECK ADD  CONSTRAINT [FK_Topics_Courses] FOREIGN KEY([topic_course_id])
+REFERENCES [dbo].[Courses] ([course_id])
+GO
+ALTER TABLE [dbo].[Topics] CHECK CONSTRAINT [FK_Topics_Courses]
+GO
+USE [master]
+GO
+ALTER DATABASE [ITIExamSystem] SET  READ_WRITE 
+GO

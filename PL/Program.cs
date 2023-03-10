@@ -14,7 +14,8 @@ namespace PL
         {
             var services = new ServiceCollection();
             services.AddScoped<DBHelper>();
-            services.AddScoped<IQuestionRepository , QuestionRepository>();
+            services.AddScoped<IExamRepository , ExamRepository>();
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
             services.AddScoped<IChoiceRepository, ChoiceRepository>();
             services.AddScoped<ITopicRepository, TopicRepository>();
             services.AddScoped<IStudentAnswerRepository, StudentAnswerRepository>();
