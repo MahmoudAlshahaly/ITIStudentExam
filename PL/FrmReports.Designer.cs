@@ -45,6 +45,9 @@ namespace PL
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtInstruID = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCourseID = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -175,7 +178,7 @@ namespace PL
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(657, 328);
+            this.label3.Location = new System.Drawing.Point(657, 375);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label3.Size = new System.Drawing.Size(221, 31);
@@ -187,7 +190,7 @@ namespace PL
             // 
             this.txtDeptID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtDeptID.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeptID.Location = new System.Drawing.Point(412, 328);
+            this.txtDeptID.Location = new System.Drawing.Point(412, 375);
             this.txtDeptID.Name = "txtDeptID";
             this.txtDeptID.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDeptID.Size = new System.Drawing.Size(239, 31);
@@ -198,7 +201,7 @@ namespace PL
             this.button2.BackColor = System.Drawing.Color.Crimson;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(97, 329);
+            this.button2.Location = new System.Drawing.Point(97, 376);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(264, 31);
             this.button2.TabIndex = 71;
@@ -211,7 +214,7 @@ namespace PL
             this.button3.BackColor = System.Drawing.Color.Crimson;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(97, 403);
+            this.button3.Location = new System.Drawing.Point(97, 450);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(264, 31);
             this.button3.TabIndex = 74;
@@ -226,7 +229,7 @@ namespace PL
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(657, 402);
+            this.label4.Location = new System.Drawing.Point(657, 449);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label4.Size = new System.Drawing.Size(221, 31);
@@ -238,16 +241,57 @@ namespace PL
             // 
             this.txtInstruID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtInstruID.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInstruID.Location = new System.Drawing.Point(412, 402);
+            this.txtInstruID.Location = new System.Drawing.Point(412, 449);
             this.txtInstruID.Name = "txtInstruID";
             this.txtInstruID.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtInstruID.Size = new System.Drawing.Size(239, 31);
             this.txtInstruID.TabIndex = 72;
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Crimson;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button4.Location = new System.Drawing.Point(97, 314);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(264, 31);
+            this.button4.TabIndex = 77;
+            this.button4.Text = "Print Topics In Course";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label5.Location = new System.Drawing.Point(657, 313);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label5.Size = new System.Drawing.Size(221, 31);
+            this.label5.TabIndex = 76;
+            this.label5.Text = "Enter Course ID :";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtCourseID
+            // 
+            this.txtCourseID.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtCourseID.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCourseID.Location = new System.Drawing.Point(412, 313);
+            this.txtCourseID.Name = "txtCourseID";
+            this.txtCourseID.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtCourseID.Size = new System.Drawing.Size(239, 31);
+            this.txtCourseID.TabIndex = 75;
+            // 
             // FrmReports
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1016, 605);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtCourseID);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtInstruID);
@@ -264,7 +308,7 @@ namespace PL
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Droid Arabic Kufi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FrmReports";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
@@ -294,5 +338,8 @@ namespace PL
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtInstruID;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCourseID;
     }
 }

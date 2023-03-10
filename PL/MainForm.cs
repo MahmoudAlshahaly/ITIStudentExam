@@ -64,5 +64,23 @@ namespace PL
             FrmReports frm = new FrmReports();
             frm.ShowDialog();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FrmTopics frm = new FrmTopics();
+            frm.ShowDialog();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            FrmExam frm = new FrmExam();
+            frm.ShowDialog();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            FrmQuestions frm = new FrmQuestions();
+            frm.ShowDialog();
+        }
     }
 }

@@ -10,10 +10,6 @@ namespace BLL.Interfaces
     public interface IExamGetRepository
     {
         List<ExamGet> GetByID(int id);
-        int GenerateExam(GenerateExam entity);
-
-        List<Exam> GetAll();
-        int Insert(Exam entity);
 
     }
 }

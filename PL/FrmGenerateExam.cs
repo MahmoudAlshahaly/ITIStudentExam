@@ -14,21 +14,21 @@ namespace PL
 {
     public partial class FrmGenerateExam : Form
     {
-        private readonly IExamGetRepository examGetRepository;
+        private readonly IExamRepository examRepository;
         private readonly ICoursesRepository coursesRepository;
 
         private GenerateExam generateExam;
         public FrmGenerateExam()
         {
             InitializeComponent();
-            examGetRepository = Program.GetService<IExamGetRepository>();
+            examRepository = Program.GetService<IExamRepository>();
             coursesRepository = Program.GetService<ICoursesRepository>();
 
             generateExam = new GenerateExam();
         }
         public void FillExam()
         {
-            cbxExamName.DataSource = examGetRepository.GetAll();
+            cbxExamName.DataSource = examRepository.GetAll();
             cbxExamName.DisplayMember = "exam_name";
             cbxExamName.ValueMember = "exam_id";
         }
@@ -67,7 +67,7 @@ namespace PL
 
             if (validation() == true)
             {
-                var data=   examGetRepository.GenerateExam(EXAM());
+                var data=   examRepository.GenerateExam(EXAM());
                 if (data >= 1)
                 {
                     MessageBox.Show("تم انشاء الامتحان بنجاح", "تأكيد", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -32,8 +32,9 @@ namespace PL
             this.rptExamStudentModel1 = new PL.rptExamStudentModel();
             this.rptStudentGrades1 = new PL.rptStudentGrades();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.rptAllStudentDept1 = new PL.rptAllStudentDept();
             this.rptInstructorCourseStu1 = new PL.rptInstructorCourseStu();
+            this.rptAllStudentDept1 = new PL.rptAllStudentDept();
+            this.rptTopicsInCourse1 = new PL.rptTopicsInCourse();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -44,7 +45,7 @@ namespace PL
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.rptInstructorCourseStu1;
+            this.crystalReportViewer1.ReportSource = this.rptTopicsInCourse1;
             this.crystalReportViewer1.Size = new System.Drawing.Size(832, 602);
             this.crystalReportViewer1.TabIndex = 0;
             // 
@@ -67,5 +68,6 @@ namespace PL
         private rptStudentGrades rptStudentGrades1;
         private rptAllStudentDept rptAllStudentDept1;
         private rptInstructorCourseStu rptInstructorCourseStu1;
+        private rptTopicsInCourse rptTopicsInCourse1;
     }
 }

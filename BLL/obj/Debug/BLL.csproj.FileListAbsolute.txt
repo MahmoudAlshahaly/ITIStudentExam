@@ -7,3 +7,12 @@ D:\StudentExam\BLL\bin\Debug\DAL.pdb
 D:\StudentExam\BLL\obj\Debug\BLL.csproj.CopyComplete
 D:\StudentExam\BLL\obj\Debug\BLL.dll
 D:\StudentExam\BLL\obj\Debug\BLL.pdb
+D:\StudentExam\ITIStudentExam\BLL\bin\Debug\BLL.dll
+D:\StudentExam\ITIStudentExam\BLL\bin\Debug\BLL.pdb
+D:\StudentExam\ITIStudentExam\BLL\bin\Debug\DAL.dll
+D:\StudentExam\ITIStudentExam\BLL\bin\Debug\DAL.pdb
+D:\StudentExam\ITIStudentExam\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\StudentExam\ITIStudentExam\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\StudentExam\ITIStudentExam\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\StudentExam\ITIStudentExam\BLL\obj\Debug\BLL.dll
+D:\StudentExam\ITIStudentExam\BLL\obj\Debug\BLL.pdb

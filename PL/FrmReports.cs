@@ -77,5 +77,17 @@ namespace PL
                 frm1.ShowDialog();
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (txtCourseID.Text != "")
+            {
+                rptTopicsInCourse r = new rptTopicsInCourse();
+                r.SetParameterValue("@course_id", txtCourseID.Text);
+                FrmPrint frm1 = new FrmPrint();
+                frm1.crystalReportViewer1.ReportSource = r;
+                frm1.ShowDialog();
+            }
+        }
     }
 }

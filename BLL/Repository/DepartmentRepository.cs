@@ -80,7 +80,7 @@ namespace BLL.Repository
         {
             param = new Dictionary<string, object>()
             {
-                ["@Department_id"] = id,
+                ["@dept_id"] = id,
             };
             return db.ExecuteStored("DepartmentRemoveOne", param);
         }
