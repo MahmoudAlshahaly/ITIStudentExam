@@ -6,7 +6,6 @@ D:\StudentExam\DAL\obj\Debug\DAL.dll
 D:\StudentExam\DAL\obj\Debug\DAL.pdb
 D:\StudentExam\ITIStudentExam\DAL\bin\Debug\DAL.dll
 D:\StudentExam\ITIStudentExam\DAL\bin\Debug\DAL.pdb
-D:\StudentExam\ITIStudentExam\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
 D:\StudentExam\ITIStudentExam\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\StudentExam\ITIStudentExam\DAL\obj\Debug\DAL.dll
 D:\StudentExam\ITIStudentExam\DAL\obj\Debug\DAL.pdb

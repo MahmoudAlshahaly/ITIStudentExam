@@ -67,6 +67,7 @@ namespace DAL
             }
             else
             {
+                sqlcmd.CommandType = CommandType.Text;
                 sqlcmd.Parameters.Clear();
             }
             con.Open();
