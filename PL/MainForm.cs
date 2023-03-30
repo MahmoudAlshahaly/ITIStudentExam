@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,78 +14,130 @@ namespace PL
 {
     public partial class MainForm : Form
     {
+        Button currentButton;
+        Form ActiveForm;
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void ActivateButton(object btnsender)
+        {
+            DisableButton();
+            if (btnsender != null)
+            {
+                if (currentButton != (Button)btnsender)
+                {
+                    currentButton = (Button)btnsender;
+                    currentButton.BackColor = Color.Firebrick;
+                }
+            }
+        }
+        private void DisableButton()
+        {
+            foreach (Control prevButton in panelMenu.Controls)
+            {
+                if (prevButton.GetType() == typeof(Button))
+                {
+                    prevButton.BackColor = Color.Maroon;
+                }
+            }
+        }
+
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            if (ActiveForm != null)
+            {
+                ActiveForm.Close();
+            }
+            ActivateButton(btnSender);
+            ActiveForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.DesktopPanel.Controls.Add(childForm);
+            this.DesktopPanel.Tag = childForm;
+            lbl_title.Text = childForm.Text;
+            childForm.BringToFront();
+            childForm.Show();
+            lbl_title.Text = childForm.Text;
+        }
+
+        private void btn_addCrs_Click(object sender, EventArgs e)
         {
             FrmCourse frm = new FrmCourse();
-            frm.ShowDialog();
+            OpenChildForm(frm, sender);
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            FrmDepartment frm = new FrmDepartment();
-            frm.ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_addStd_Click(object sender, EventArgs e)
         {
             FrmStudents frm = new FrmStudents();
-            frm.ShowDialog();
+            OpenChildForm(frm, sender);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            FrmInstructor frm = new FrmInstructor();
-            frm.ShowDialog();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            FrmStudentCourses frm = new FrmStudentCourses();
-            frm.ShowDialog();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            FrmInstructorCourses frm = new FrmInstructorCourses();
-            frm.ShowDialog();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
+        private void btn_addExm_Click(object sender, EventArgs e)
         {
             FrmGenerateExam frm = new FrmGenerateExam();
-            frm.ShowDialog();
+            OpenChildForm(frm, sender);
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            FrmReports frm = new FrmReports();
-            frm.ShowDialog();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            FrmTopics frm = new FrmTopics();
-            frm.ShowDialog();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
+        private void btn_exmName_Click(object sender, EventArgs e)
         {
             FrmExamName frm = new FrmExamName();
-            frm.ShowDialog();
+            OpenChildForm(frm, sender);
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void btn_addQ_Click(object sender, EventArgs e)
         {
             FrmQuestions frm = new FrmQuestions();
-            frm.ShowDialog();
+            OpenChildForm(frm, sender);
         }
 
-        private void button12_Click(object sender, EventArgs e)
+        private void btn_addIns_Click(object sender, EventArgs e)
+        {
+            FrmInstructor frm = new FrmInstructor();
+            OpenChildForm(frm, sender);
+        }
+
+        private void btn_dept_Click(object sender, EventArgs e)
+        {
+            FrmDepartment frm = new FrmDepartment();
+            OpenChildForm(frm, sender);
+        }
+
+        private void btn_stdCrs_Click(object sender, EventArgs e)
+        {
+            FrmStudentCourses frm = new FrmStudentCourses();
+            OpenChildForm(frm, sender);
+        }
+
+        private void btn_insCrs_Click(object sender, EventArgs e)
+        {
+            FrmInstructorCourses frm = new FrmInstructorCourses();
+            OpenChildForm(frm, sender);
+        }
+
+        private void btn_top_Click(object sender, EventArgs e)
+        {
+            FrmTopics frm = new FrmTopics();
+            OpenChildForm(frm, sender);
+        }
+
+        private void btn_rep_Click(object sender, EventArgs e)
+        {
+            FrmReports frm = new FrmReports();
+            OpenChildForm(frm, sender);
+        }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+            FrmLogin frm = new FrmLogin();
+            this.Close();
+            frm.Show();
+        }
+
+        private void btn_Backup_Click(object sender, EventArgs e)
         {
             try
             {
@@ -99,18 +150,18 @@ namespace PL
                 {
                     //Dictionary<string, object> param = new Dictionary<string, object>()
                     //{
-                    //    ["@filename"] = open.FileName
+                    //    ["@filename"] = $"@{open.FileName}"
                     //};
                     DBHelper db = new DBHelper();
                     db.ExecuteStored("backup database ITIExamSystem To Disk='" + open.FileName + "'", null);
-                    
+
                     MessageBox.Show("تم اخذ نسخه احتياطية بنجاح", "تأكيد", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                 }
-             }
+                }
+            }
             catch (Exception) { };
         }
 
-        private void button11_Click(object sender, EventArgs e)
+        private void btn_restore_Click(object sender, EventArgs e)
         {
             Server server = new Server(@".\SQLEXPRESS");
             server.KillAllProcesses("ITIExamSystem");

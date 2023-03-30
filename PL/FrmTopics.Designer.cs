@@ -29,156 +29,99 @@ namespace PL
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbxCourse = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.Dgv = new System.Windows.Forms.DataGridView();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnDeleteAll = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.Dgv = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbxCourse = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label2
+            // label4
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label2.Location = new System.Drawing.Point(370, 107);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 28);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "اسم  التوبيك :";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Maroon;
+            this.label4.Location = new System.Drawing.Point(735, 90);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(112, 28);
+            this.label4.TabIndex = 68;
+            this.label4.Text = "Course :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtName
+            // Column3
             // 
-            this.txtName.Location = new System.Drawing.Point(488, 106);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(234, 28);
-            this.txtName.TabIndex = 0;
+            this.Column3.DataPropertyName = "topic_course_id";
+            this.Column3.HeaderText = "Course";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
-            // label1
+            // Column2
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Location = new System.Drawing.Point(24, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 28);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "مسلسل : ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Column2.DataPropertyName = "topic_name";
+            this.Column2.HeaderText = "Topic";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
-            // txtID
+            // Column1
             // 
-            this.txtID.Location = new System.Drawing.Point(142, 106);
-            this.txtID.Name = "txtID";
-            this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(213, 28);
-            this.txtID.TabIndex = 11;
+            this.Column1.DataPropertyName = "topic_id";
+            this.Column1.HeaderText = "Id";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
-            // btnNew
+            // cbxCourse
             // 
-            this.btnNew.BackColor = System.Drawing.Color.Crimson;
-            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNew.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnNew.Location = new System.Drawing.Point(348, 220);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(134, 36);
-            this.btnNew.TabIndex = 42;
-            this.btnNew.Text = "جديد";
-            this.btnNew.UseVisualStyleBackColor = false;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.Color.Crimson;
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEdit.Location = new System.Drawing.Point(485, 220);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(134, 36);
-            this.btnEdit.TabIndex = 41;
-            this.btnEdit.Text = "تعديل";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.Crimson;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDelete.Location = new System.Drawing.Point(627, 220);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(134, 36);
-            this.btnDelete.TabIndex = 40;
-            this.btnDelete.Text = "حذف";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnDeleteAll
-            // 
-            this.btnDeleteAll.BackColor = System.Drawing.Color.Crimson;
-            this.btnDeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDeleteAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDeleteAll.Location = new System.Drawing.Point(767, 220);
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new System.Drawing.Size(134, 36);
-            this.btnDeleteAll.TabIndex = 39;
-            this.btnDeleteAll.Text = "حذف الجميع";
-            this.btnDeleteAll.UseVisualStyleBackColor = false;
-            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.Crimson;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAdd.Location = new System.Drawing.Point(208, 220);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(134, 36);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "اضافة";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.cbxCourse.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbxCourse.FormattingEnabled = true;
+            this.cbxCourse.Location = new System.Drawing.Point(853, 89);
+            this.cbxCourse.Name = "cbxCourse";
+            this.cbxCourse.Size = new System.Drawing.Size(209, 29);
+            this.cbxCourse.TabIndex = 67;
             // 
             // btnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.Crimson;
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSearch.BackColor = System.Drawing.Color.DarkSlateGray;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearch.Location = new System.Drawing.Point(650, 286);
+            this.btnSearch.Location = new System.Drawing.Point(650, 271);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(134, 28);
-            this.btnSearch.TabIndex = 39;
-            this.btnSearch.Text = "بحث";
+            this.btnSearch.TabIndex = 62;
+            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(359, 286);
+            this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtSearch.Location = new System.Drawing.Point(359, 271);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(274, 28);
-            this.txtSearch.TabIndex = 38;
+            this.txtSearch.TabIndex = 61;
             // 
             // Dgv
             // 
             this.Dgv.AllowUserToAddRows = false;
             this.Dgv.AllowUserToDeleteRows = false;
+            this.Dgv.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.Dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -186,96 +129,137 @@ namespace PL
             this.Column1,
             this.Column2,
             this.Column3});
-            this.Dgv.Location = new System.Drawing.Point(12, 334);
+            this.Dgv.Location = new System.Drawing.Point(12, 319);
             this.Dgv.Name = "Dgv";
             this.Dgv.ReadOnly = true;
+            this.Dgv.RowHeadersWidth = 51;
             this.Dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv.Size = new System.Drawing.Size(1055, 250);
-            this.Dgv.TabIndex = 4;
-            this.Dgv.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_CellMouseClick);
+            this.Dgv.TabIndex = 57;
+            this.Dgv.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_CellMouseClick);
             // 
-            // panel2
+            // btnNew
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(115)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 596);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1079, 62);
-            this.panel2.TabIndex = 50;
+            this.btnNew.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnNew.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNew.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnNew.Location = new System.Drawing.Point(348, 205);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(134, 36);
+            this.btnNew.TabIndex = 66;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // panel1
+            // btnEdit
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(115)))));
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1079, 62);
-            this.panel1.TabIndex = 49;
+            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEdit.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEdit.Location = new System.Drawing.Point(487, 205);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(134, 36);
+            this.btnEdit.TabIndex = 65;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // label7
+            // btnDelete
             // 
-            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label7.Font = new System.Drawing.Font("Droid Arabic Kufi", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(414, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(208, 28);
-            this.label7.TabIndex = 34;
-            this.label7.Text = "شاشة اضافة الطلبة";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDelete.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDelete.Location = new System.Drawing.Point(627, 205);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(134, 36);
+            this.btnDelete.TabIndex = 64;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // cbxCourse
+            // btnDeleteAll
             // 
-            this.cbxCourse.FormattingEnabled = true;
-            this.cbxCourse.Location = new System.Drawing.Point(853, 104);
-            this.cbxCourse.Name = "cbxCourse";
-            this.cbxCourse.Size = new System.Drawing.Size(209, 29);
-            this.cbxCourse.TabIndex = 53;
+            this.btnDeleteAll.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteAll.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnDeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDeleteAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDeleteAll.Location = new System.Drawing.Point(767, 205);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(134, 36);
+            this.btnDeleteAll.TabIndex = 63;
+            this.btnDeleteAll.Text = "Delete Al";
+            this.btnDeleteAll.UseVisualStyleBackColor = false;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
-            // label4
+            // btnAdd
             // 
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label4.Location = new System.Drawing.Point(735, 105);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 28);
-            this.label4.TabIndex = 54;
-            this.label4.Text = "الكورس :";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAdd.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAdd.Location = new System.Drawing.Point(208, 205);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(134, 36);
+            this.btnAdd.TabIndex = 56;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // Column1
+            // label2
             // 
-            this.Column1.DataPropertyName = "topic_id";
-            this.Column1.HeaderText = "مسلسل";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Maroon;
+            this.label2.Location = new System.Drawing.Point(370, 92);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 28);
+            this.label2.TabIndex = 60;
+            this.label2.Text = "Topic :";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Column2
+            // txtName
             // 
-            this.Column2.DataPropertyName = "topic_name";
-            this.Column2.HeaderText = "اسم التوبيك";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.txtName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtName.Location = new System.Drawing.Point(488, 91);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(234, 28);
+            this.txtName.TabIndex = 55;
             // 
-            // Column3
+            // label1
             // 
-            this.Column3.DataPropertyName = "topic_course_id";
-            this.Column3.HeaderText = "اسم الكورس";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
+            this.label1.Location = new System.Drawing.Point(24, 91);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 28);
+            this.label1.TabIndex = 59;
+            this.label1.Text = "Id : ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtID
+            // 
+            this.txtID.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtID.Location = new System.Drawing.Point(142, 91);
+            this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.Size = new System.Drawing.Size(213, 28);
+            this.txtID.TabIndex = 58;
             // 
             // FrmTopics
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1079, 658);
-            this.Controls.Add(this.cbxCourse);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbxCourse);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.Dgv);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnEdit);
@@ -290,38 +274,33 @@ namespace PL
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmTopics";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "اضافة الطلبة";
+            this.Text = "Topics";
             this.Load += new System.EventHandler(this.FrmCity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtID;
+
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.ComboBox cbxCourse;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.DataGridView Dgv;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnDeleteAll;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.DataGridView Dgv;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cbxCourse;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtID;
     }
 }

@@ -19,12 +19,12 @@ namespace PL
         {
             if (txtUserName.Text == "")
             {
-                MessageBox.Show("من فضلك ادخل اسم المستخدم", "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter username ", "alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (txtUserPassword.Text == "")
             {
-                MessageBox.Show("من فضلك ادخل كلمة المرور", "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter password", "alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -33,10 +33,10 @@ namespace PL
         {
             if (validation() == true)
             {
-                if (rbtnInstructor.Checked==true)
+                if (rbtnInstructor.Checked == true)
                 {
-                    var  instru = instructorRepository.GetByNamePassword(txtUserName.Text, txtUserPassword.Text);
-                    if (instru.instru_name == txtUserName.Text && instru.instru_password == txtUserPassword.Text)
+                    var instru = instructorRepository.GetByNamePassword(txtUserName.Text, txtUserPassword.Text);
+                    if (instru != null && instru.instru_name == txtUserName.Text && instru.instru_password == txtUserPassword.Text)
                     {
                         this.Hide();
                         MainForm frm = new MainForm();
@@ -44,12 +44,12 @@ namespace PL
                     }
                     else
                     {
-                        MessageBox.Show("اسم المستخدم او كلمة المرور خطاء", "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Invalid username or password", "alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else if(rbtnStudent.Checked==true)
+                else if (rbtnStudent.Checked == true)
                 {
-                     var stu = studentRepository.GetByNamePassword(txtUserName.Text, txtUserPassword.Text);
+                    var stu = studentRepository.GetByNamePassword(txtUserName.Text, txtUserPassword.Text);
                     if (stu.stu_name == txtUserName.Text && stu.stu_password == txtUserPassword.Text)
                     {
                         Properties.Settings.Default.stu_id = stu.stu_id.ToString();
@@ -60,11 +60,16 @@ namespace PL
                     }
                     else
                     {
-                        MessageBox.Show("اسم المستخدم او كلمة المرور خطاء", "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Invalid username or password", "alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-    
+
             }
+        }
+
+        private void lbl_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

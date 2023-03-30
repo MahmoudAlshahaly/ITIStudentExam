@@ -27,7 +27,7 @@ namespace BLL.Repository
             {
                 ["@exam_id"] = id,
             };
-            dataTable = db.SelectStored("ExamByID", param);
+            dataTable = db.SelectStored("ExamGetByID", param);
             List<ExamGet> entitys = MapDataTableToExamGet(dataTable);
             return entitys;
         }

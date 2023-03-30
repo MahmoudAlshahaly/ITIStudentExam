@@ -109,7 +109,7 @@ namespace PL
             studentAnswerRepository.Insert(AddAnswer());
             if(++count>=numberOfQuestion)
             {
-                MessageBox.Show($"Exam Finished With Score : {score} % ", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Exam Finished With Score : {(score / (numberOfQuestion * 10)) * 100} % ", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 studentGradeRepository.Insert(AddGrades());
                 this.Close();
                 return;
@@ -128,7 +128,7 @@ namespace PL
 
             if (++count >= numberOfQuestion)
             {
-                MessageBox.Show($"Exam Finished With Score : {score} % ", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Exam Finished With Score : {(score / (numberOfQuestion * 10)) * 100} % ", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 studentGradeRepository.Insert(AddGrades());
 
                 this.Close();
@@ -149,7 +149,7 @@ namespace PL
 
             if (++count >= numberOfQuestion)
             {
-                MessageBox.Show($"Exam Finished With Score : {score} % ", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Exam Finished With Score : {(score / (numberOfQuestion * 10)) * 100} % ", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 studentGradeRepository.Insert(AddGrades());
 
                 this.Close();
@@ -170,7 +170,7 @@ namespace PL
 
             if (++count >= numberOfQuestion)
             {
-                MessageBox.Show($"Exam Finished With Score : {score} % ", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Exam Finished With Score : {(score / (numberOfQuestion * 10)) * 100} % ", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 studentGradeRepository.Insert(AddGrades());
 
                 this.Close();

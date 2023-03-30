@@ -25,9 +25,6 @@ namespace PL
         {     
             btnAdd.Enabled = true;
             btnNew.Enabled = true;
-            btnDelete.Enabled = false;
-            btnDeleteAll.Enabled = false;
-            btnEdit.Enabled = false;
             //Dgv.RowTemplate.Height = 80;
             Dgv.DataSource = studentCourseRepository.GetAll();
             //((DataGridViewImageColumn)Dgv.Columns[Dgv.Columns.Count - 1]).ImageLayout = DataGridViewImageCellLayout.Stretch;

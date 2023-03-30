@@ -67,11 +67,11 @@ namespace PL
         private Question entityQuestion()
         {
             question.question_id = Convert.ToInt32(txtID.Text);
-            question.question_type = txtRightAnswer.Text;
-            question.question_title = txtRightAnswer.Text;
+            question.question_type = CbxType.Text;
+            question.question_title = txtTitleQuestion.Text;
             question.question_right_answer = txtRightAnswer.Text;
-            question.question_body_answer_id = txtRightAnswer.Text;
-            question.questions_course_id = txtRightAnswer.Text;
+            question.question_body_answer_id = txtID.Text;
+            question.questions_course_id = cbxCourse.SelectedValue.ToString();
         
            
             return question;
@@ -79,10 +79,10 @@ namespace PL
         private Choice entityChoice()
         {
             choice.choise_id = Convert.ToInt32(txtID.Text);
-            choice.choise_answer_first = txtRightAnswer.Text;
-            choice.choise_answer_second = txtRightAnswer.Text;
-            choice.choise_answer_third = txtRightAnswer.Text;
-            choice.choise_answer_fourth  = txtRightAnswer.Text;
+            choice.choise_answer_first = txtChoiceFirst.Text;
+            choice.choise_answer_second = txtChoiceSecond.Text;
+            choice.choise_answer_third = txtChoiceThird.Text;
+            choice.choise_answer_fourth  = txtChoiceFourth.Text;
 
             return choice;
         }
@@ -113,24 +113,15 @@ namespace PL
                 MessageBox.Show("من فضلك ادخل الاجابة الثانية", "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (txtChoiceThird.Text == "")
-            {
-                MessageBox.Show("من فضلك ادخل الاجابة الثالثة", "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            if (txtChoiceFourth.Text == "")
-            {
-                MessageBox.Show("من فضلك ادخل الاجابة الرابعة", "اخطار", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
+
             return true;
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (validation() == true)
             {
-                var state = questionRepository.Insert(entityQuestion());
                 var state2 = choiceRepository.Insert(entityChoice());
+                var state = questionRepository.Insert(entityQuestion());
                 if (state >= 1 && state2 >= 1)
                 {
                     MessageBox.Show("تم الحفظ بنجاح", "تأكيد", MessageBoxButtons.OK, MessageBoxIcon.Information);

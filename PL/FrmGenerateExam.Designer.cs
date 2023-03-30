@@ -29,185 +29,152 @@ namespace PL
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblEnter = new System.Windows.Forms.Label();
-            this.txtNumMCQ = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtNumTF = new System.Windows.Forms.TextBox();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.nudNumTF = new System.Windows.Forms.NumericUpDown();
+            this.nudNumMCQ = new System.Windows.Forms.NumericUpDown();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.cbxCourseName = new System.Windows.Forms.ComboBox();
-            this.cbxExamName = new System.Windows.Forms.ComboBox();
-            this.panel1.SuspendLayout();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblEnter = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNumTF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNumMCQ)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel2
+            // nudNumTF
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(115)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 487);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(833, 62);
-            this.panel2.TabIndex = 52;
+            this.nudNumTF.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.nudNumTF.Location = new System.Drawing.Point(412, 172);
+            this.nudNumTF.Name = "nudNumTF";
+            this.nudNumTF.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.nudNumTF.Size = new System.Drawing.Size(239, 28);
+            this.nudNumTF.TabIndex = 78;
+            this.nudNumTF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // panel1
+            // nudNumMCQ
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(115)))));
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(833, 62);
-            this.panel1.TabIndex = 51;
+            this.nudNumMCQ.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.nudNumMCQ.Location = new System.Drawing.Point(412, 96);
+            this.nudNumMCQ.Name = "nudNumMCQ";
+            this.nudNumMCQ.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.nudNumMCQ.Size = new System.Drawing.Size(239, 28);
+            this.nudNumMCQ.TabIndex = 77;
+            this.nudNumMCQ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label7
+            // txtName
             // 
-            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label7.Font = new System.Drawing.Font("Droid Arabic Kufi", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(313, 19);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(208, 28);
-            this.label7.TabIndex = 34;
-            this.label7.Text = "Generate Exam";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtName.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(412, 317);
+            this.txtName.Name = "txtName";
+            this.txtName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtName.Size = new System.Drawing.Size(239, 31);
+            this.txtName.TabIndex = 76;
             // 
-            // lblEnter
+            // cbxCourseName
             // 
-            this.lblEnter.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblEnter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblEnter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblEnter.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnter.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblEnter.Location = new System.Drawing.Point(412, 104);
-            this.lblEnter.Name = "lblEnter";
-            this.lblEnter.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblEnter.Size = new System.Drawing.Size(221, 31);
-            this.lblEnter.TabIndex = 59;
-            this.lblEnter.Text = "Num Question MCQ :";
-            this.lblEnter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbxCourseName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbxCourseName.FormattingEnabled = true;
+            this.cbxCourseName.Location = new System.Drawing.Point(412, 249);
+            this.cbxCourseName.Name = "cbxCourseName";
+            this.cbxCourseName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cbxCourseName.Size = new System.Drawing.Size(239, 29);
+            this.cbxCourseName.TabIndex = 75;
             // 
-            // txtNumMCQ
+            // label3
             // 
-            this.txtNumMCQ.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtNumMCQ.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumMCQ.Location = new System.Drawing.Point(167, 104);
-            this.txtNumMCQ.Name = "txtNumMCQ";
-            this.txtNumMCQ.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtNumMCQ.Size = new System.Drawing.Size(239, 31);
-            this.txtNumMCQ.TabIndex = 58;
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Maroon;
+            this.label3.Location = new System.Drawing.Point(185, 323);
+            this.label3.Name = "label3";
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label3.Size = new System.Drawing.Size(221, 31);
+            this.label3.TabIndex = 74;
+            this.label3.Text = "Exam Name :";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // label2
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(412, 180);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(221, 31);
-            this.label1.TabIndex = 61;
-            this.label1.Text = "Num Question T,F :";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtNumTF
-            // 
-            this.txtNumTF.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtNumTF.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumTF.Location = new System.Drawing.Point(167, 180);
-            this.txtNumTF.Name = "txtNumTF";
-            this.txtNumTF.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtNumTF.Size = new System.Drawing.Size(239, 31);
-            this.txtNumTF.TabIndex = 60;
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Maroon;
+            this.label2.Location = new System.Drawing.Point(185, 248);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label2.Size = new System.Drawing.Size(221, 31);
+            this.label2.TabIndex = 73;
+            this.label2.Text = "Course Name :";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCreate
             // 
-            this.btnCreate.BackColor = System.Drawing.Color.Crimson;
-            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreate.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCreate.Location = new System.Drawing.Point(338, 407);
+            this.btnCreate.Location = new System.Drawing.Point(331, 405);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(134, 58);
-            this.btnCreate.TabIndex = 62;
+            this.btnCreate.Size = new System.Drawing.Size(151, 51);
+            this.btnCreate.TabIndex = 72;
             this.btnCreate.Text = "Generate";
             this.btnCreate.UseVisualStyleBackColor = false;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // label2
+            // label1
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(412, 261);
-            this.label2.Name = "label2";
-            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label2.Size = new System.Drawing.Size(221, 31);
-            this.label2.TabIndex = 63;
-            this.label2.Text = "Course Name :";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
+            this.label1.Location = new System.Drawing.Point(185, 167);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(221, 31);
+            this.label1.TabIndex = 71;
+            this.label1.Text = "Num Question T,F :";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // lblEnter
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(412, 336);
-            this.label3.Name = "label3";
-            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label3.Size = new System.Drawing.Size(221, 31);
-            this.label3.TabIndex = 64;
-            this.label3.Text = "Exam Name :";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cbxCourseName
-            // 
-            this.cbxCourseName.FormattingEnabled = true;
-            this.cbxCourseName.Location = new System.Drawing.Point(167, 263);
-            this.cbxCourseName.Name = "cbxCourseName";
-            this.cbxCourseName.Size = new System.Drawing.Size(239, 29);
-            this.cbxCourseName.TabIndex = 65;
-            // 
-            // cbxExamName
-            // 
-            this.cbxExamName.FormattingEnabled = true;
-            this.cbxExamName.Location = new System.Drawing.Point(167, 336);
-            this.cbxExamName.Name = "cbxExamName";
-            this.cbxExamName.Size = new System.Drawing.Size(239, 29);
-            this.cbxExamName.TabIndex = 66;
+            this.lblEnter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblEnter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblEnter.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnter.ForeColor = System.Drawing.Color.Maroon;
+            this.lblEnter.Location = new System.Drawing.Point(185, 91);
+            this.lblEnter.Name = "lblEnter";
+            this.lblEnter.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblEnter.Size = new System.Drawing.Size(221, 31);
+            this.lblEnter.TabIndex = 70;
+            this.lblEnter.Text = "Num Question MCQ :";
+            this.lblEnter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmGenerateExam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(833, 549);
-            this.Controls.Add(this.cbxExamName);
+            this.Controls.Add(this.nudNumTF);
+            this.Controls.Add(this.nudNumMCQ);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.cbxCourseName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtNumTF);
             this.Controls.Add(this.lblEnter);
-            this.Controls.Add(this.txtNumMCQ);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Droid Arabic Kufi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmGenerateExam";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmGenerateExam_Load);
-            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudNumTF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNumMCQ)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,17 +182,14 @@ namespace PL
 
         #endregion
 
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblEnter;
-        private System.Windows.Forms.TextBox txtNumMCQ;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNumTF;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown nudNumTF;
+        private System.Windows.Forms.NumericUpDown nudNumMCQ;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.ComboBox cbxCourseName;
-        private System.Windows.Forms.ComboBox cbxExamName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblEnter;
     }
 }

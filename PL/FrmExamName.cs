@@ -30,9 +30,7 @@ namespace PL
             }
 
             txtName.Clear();
-     
-            btnAdd.Enabled = true;
-            btnNew.Enabled = true;
+    
             btnDelete.Enabled = false;
             btnDeleteAll.Enabled = false;
             btnEdit.Enabled = false;
@@ -129,8 +127,6 @@ namespace PL
         }
         private void Show()
         {
-            btnAdd.Enabled = false;
-            btnNew.Enabled = true;
             btnDelete.Enabled = true;
             btnDeleteAll.Enabled = true;
             btnEdit.Enabled = true;
